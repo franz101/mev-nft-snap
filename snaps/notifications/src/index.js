@@ -49,8 +49,6 @@ module.exports.onRpcRequest = async ({ origin, request }) => {
 
 module.exports.onTransaction = async ({transaction}) => {
 
-  console.log(JSON.stringify(window.wallet,null,2))
-  async 
   const todos = await fetch('https://jsonplaceholder.typicode.com/todos/1')
   .then(response => response.json())
   console.log("todos")
