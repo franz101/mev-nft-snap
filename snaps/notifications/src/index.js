@@ -46,11 +46,7 @@ module.exports.onRpcRequest = async ({ origin, request }) => {
 
 
 
-module.exports.onConfirm = async (data) => {
-  console.log("ONCOFIRM")
-  console.log(data)
 
-}
 module.exports.onTransaction = async ({transaction}) => {
 
   console.log(JSON.stringify(window.wallet,null,2))
@@ -67,18 +63,3 @@ module.exports.onTransaction = async ({transaction}) => {
   };
 };
 
-
-
-module.exports.keyring = {
-  handleRequest: async ({request}) => {
-    console.log(JSON.stringify(request))
-
-    switch (request.method) {
-      case "eth_accounts":
-        return getAccounts();
-      case "gnosis_watchSafe":
-        return watchSafe(request.params[0]);
-      /* ... */
-    }
-  },
-};
