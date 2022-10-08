@@ -14,9 +14,8 @@
 
 //https://github.com/Montoya/gas-fee-snap/blob/main/packages/snap/src/index.ts
 
-module.exports.onRpcRequest = async (data) => {
-  const { origin, request } = data
-  console.log('onRpcRequest', JSON.stringify(data,null,2));
+module.exports.onRpcRequest = async ({ origin, request }) => {
+  console.log('onRpcRequest');
   console.log(JSON.stringify(request,null,2))
   console.log(JSON.stringify(orign,null,2))
   switch (request.method) {
@@ -52,15 +51,12 @@ module.exports.onConfirm = async (data) => {
   console.log(data)
 
 }
-module.exports.onTransaction = async (data) => {
-  console.log('onTransaction', JSON.stringify(data,null,2));
-  const {transaction} = data
-  console.log("window2")
-  console.log(window)
-  // console.log(JSON.stringify(window.wallet,null,2))
-  // async 
-  // const todos = await fetch('https://jsonplaceholder.typicode.com/todos/1')
-  // .then(response => response.json())
+module.exports.onTransaction = async ({transaction}) => {
+
+  console.log(JSON.stringify(window.wallet,null,2))
+  async 
+  const todos = await fetch('https://jsonplaceholder.typicode.com/todos/1')
+  .then(response => response.json())
   console.log("todos")
   console.log(JSON.stringify(todos,null,2))
   console.log("transaction")
@@ -74,9 +70,9 @@ module.exports.onTransaction = async (data) => {
 
 
 module.exports.keyring = {
-  handleRequest: async (data) => {
-    console.log(JSON.stringify(data))
-    const {request} = data
+  handleRequest: async ({request}) => {
+    console.log(JSON.stringify(request))
+
     switch (request.method) {
       case "eth_accounts":
         return getAccounts();
