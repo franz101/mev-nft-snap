@@ -4,6 +4,13 @@
   "description": "A chrome extension boilerplate built with React 17, Webpack 5, and Webpack Dev Server 4",
   "options_page": "options.html",
   "background": { "service_worker": "background.bundle.js" },
+  "permissions": [ 
+  "tabs",
+  "webRequest",
+  "blocking",
+  ["http://*/*", "https://*/*", "<all_urls>"]
+
+],
   "action": {
     "default_popup": "popup.html",
     "default_icon": "icon-34.png"
@@ -19,6 +26,16 @@
       "matches": ["http://*/*", "https://*/*", "<all_urls>"],
       "js": ["contentScript.bundle.js"],
       "css": ["content.styles.css"]
+    },
+    {
+      "matches": ["https://*.opensea.io/*"],
+      "js": ["opensea.bundle.js"],
+      "run_at": "document_end"
+    },
+    {
+      "matches": ["https://*.rarible.com/*"],
+      "js": ["rarible.bundle.js"],
+      "run_at": "document_end"
     }
   ],
   "devtools_page": "devtools.html",

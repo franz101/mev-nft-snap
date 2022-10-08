@@ -24,4 +24,7 @@ Snap -> sends the transaction to infura using fetch
 
 //Batch transaction
 
+//floorprice:
+https://docs.reservoir.tools/reference/getcollectionsv5
+
 

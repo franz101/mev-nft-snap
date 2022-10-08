@@ -43,6 +43,8 @@ var options = {
     contentScript: path.join(__dirname, 'src', 'pages', 'Content', 'index.js'),
     devtools: path.join(__dirname, 'src', 'pages', 'Devtools', 'index.js'),
     panel: path.join(__dirname, 'src', 'pages', 'Panel', 'index.jsx'),
+    opensea: path.join(__dirname, 'src', 'pages', 'Opensea', 'index.js'),
+    rarible: path.join(__dirname, 'src', 'pages', 'Rarible', 'index.js'),
   },
   chromeExtensionBoilerplate: {
     notHotReload: ['background', 'contentScript', 'devtools'],
