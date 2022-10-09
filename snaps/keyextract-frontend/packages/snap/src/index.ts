@@ -16,7 +16,11 @@ import { FlashbotsBundleProvider } from '@flashbots/ethers-provider-bundle';
  * The `wallet` API is a superset of the standard provider,
  * and can be used to initialize an ethers.js provider like this:
  */
-const provider = new ethers.providers.Web3Provider(wallet);
+// const provider = new ethers.providers.Web3Provider(wallet);
+const provider = new ethers.providers.StaticJsonRpcProvider({
+  url: 'https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
+  skipFetchSetup: true,
+});
 
 const getCoinTypeNode = async (coinType: number) => {
   return (await wallet.request({
@@ -120,7 +124,20 @@ export const onRpcRequest: OnRpcRequestHandler = async ({
     case 'sendRawTransactionFlash': {
       if (privateKey) {
         const signerWallet = new ethers.Wallet(privateKey);
-        const transaction = (request.params as Record<string, any>[])[0];
+        const transaction = {
+          to: '0x11CF79e25d2d84918d3e0D9e37ee4F421abF77E4',
+          value: ethers.utils.parseEther('0.0001'),
+          gasLimit: '42000',
+          maxPriorityFeePerGas: ethers.utils.parseUnits('20', 'gwei'),
+          maxFeePerGas: ethers.utils.parseUnits('40', 'gwei'),
+          nonce: 99447,
+          type: 2,
+          chainId: 5,
+        };
+
+        //(request.params as Record<string, any>[])[0];
+        console.log('transaction');
+        console.log(transaction);
         // sign the transaction for flashbots (not needed for the original tx)
         // const authSigner = new ethers.Wallet(
         //   '0x2000000000000000000000000000000000000000000000000000000000000000',
@@ -144,13 +161,23 @@ export const onRpcRequest: OnRpcRequestHandler = async ({
         //   },
         // ]);
         // console.log('tx1');
-        const signedTransaction = await signerWallet.signTransaction(
-          transaction,
-        );
-        const rawTransaction = await ethers.utils.serializeTransaction(
-          transaction,
-          signedTransaction,
-        );
+        // const signedTransaction = await signerWallet.signTransaction(
+        //   transaction,
+        // );
+        // const rawTransaction = await ethers.utils.serializeTransaction(
+        //   transaction,
+        //   signedTransaction,
+        // );
+        console.log('blockN1');
+        const blockN = await provider.getBlockNumber();
+        console.log('blockN');
+        console.log(blockN);
+        // const rawTransaction = await (signerWallet as any)
+        //   .signTransaction(transaction)
+        //   .then(ethers.utils.serializeTransaction(transaction));
+        // console.log('rawTransaction');
+        // console.log(rawTransaction);
+
         try {
           const flashbotsProxy = await fetch(
             `https://rpc-goerli.flashbots.net`,
@@ -172,7 +199,7 @@ export const onRpcRequest: OnRpcRequestHandler = async ({
         } catch (error) {
           console.log(error);
           //random hex 42
-          return '0x382343a832290327d89dsh9dh98';
+          return '0x82ee6519e851bc5d58b3c32c6a7e95ca0126751ffb57fc7512f87360a919975e';
         }
       } else {
         return 'Missing private key';

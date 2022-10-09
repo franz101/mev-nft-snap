@@ -54,7 +54,7 @@ export const HeaderRow = () => {
   };
 
   return (
-    <Row>
+    <Row style={{ zIndex: 1 }}>
       <Col span={1}>
         <Avatar
           src="/MEV_NFT_LOGO_SPARE.png"

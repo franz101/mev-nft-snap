@@ -42,13 +42,13 @@ function App() {
   return (
     <MetaMaskProvider>
       <Wrapper>
-        <Layout>
-          <Header>
+        <Layout style={{}}>
+          <Header style={{ zIndex: 1 }}>
             <HeaderRow />
             <Divider />
           </Header>
           <Layout>
-            <Content style={{ backgroundColor: '#141414' }}>
+            <Content style={{ zIndex: 1 }}>
               <Result
                 icon={<UnlockOutlined color="success" />}
                 title="Secure your transactions"
@@ -66,13 +66,13 @@ function App() {
                   <Button key="buy">Set up secure wallet</Button>,
                 ]}
               />
-              <Particles
-                id="tsparticles"
-                url="/particles.json"
-                init={particlesInit}
-                loaded={particlesLoaded}
-              />
             </Content>
+            <Particles
+              id="tsparticles"
+              url="/particles.json"
+              init={particlesInit}
+              loaded={particlesLoaded}
+            />
           </Layout>
 
           <Footer />

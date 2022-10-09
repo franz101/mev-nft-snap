@@ -7,7 +7,7 @@ import { PoweredBy } from './PoweredBy';
 
 export const Footer = () => {
   return (
-    <Layout.Footer>
+    <Layout.Footer style={{ backgroundColor: '#141414', zIndex: 1 }}>
       <Row justify="space-around" style={{ paddingBottom: '20px' }}>
         <PoweredBy color="white" />
       </Row>

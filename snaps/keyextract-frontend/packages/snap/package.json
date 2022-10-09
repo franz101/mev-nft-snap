@@ -63,6 +63,6 @@
     "@metamask/utils": "^3.2.0",
     "@noble/bls12-381": "^1.4.0",
     "eth-rpc-errors": "^4.0.3",
-    "ethers": "^5.7.1"
+    "ethers": "^4.0.40"
   }
 }

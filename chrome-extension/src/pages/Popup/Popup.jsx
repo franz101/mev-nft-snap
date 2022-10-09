@@ -1,5 +1,5 @@
 import React, { useEffect, useState, Fragment } from 'react';
-import Greetings from '../../containers/Greetings/Greetings';
+import Logo from '../../containers/Logo';
 import './Popup.css';
 import {
   Col,
@@ -140,125 +140,122 @@ const Popup = () => {
             />
 
             {/* <Progress type="circle" percent={70} width={80} /> */}
+            {inputAddress.length !== 42 && <Logo />}
+            {inputAddress.length === 42 && (
+              <Row
+                gutter={[24, 24]}
+                style={{ paddingTop: '30px', width: '100%' }}
+              >
+                <Col span={12}>
+                  <p>Trust score</p>
+                </Col>
 
-            <Row
-              gutter={[24, 24]}
-              style={{ paddingTop: '30px', width: '100%' }}
-            >
-              <Col span={12}>
-                <p>Trust score</p>
-              </Col>
-              <Col span={12}>
-                {/* <Tag color="default">default</Tag> */}
-                <Button
-                  style={{ width: '100%' }}
-                  icon={<QuestionCircleOutlined />}
-                >
-                  70
-                </Button>
-              </Col>
-              {addressStats && (
-                <Fragment>
-                  <Col span={12}>
-                    <p>Historic MEV Activity</p>
-                  </Col>
-                  <Col span={12}>
-                    {pctFormatter.format(addressStats.mev_b_mean * 2)}{' '}
-                    {addressStats.mev_b_mean > 0 && (
-                      <Tag color="volcano">high ({addressStats.mev_b_sum})</Tag>
-                    )}
-                  </Col>
-                  <Col span={12}>
-                    <p>Historic Phishing Activity</p>
-                  </Col>
-                  <Col span={12}>
-                    {pctFormatter.format(addressStats.phisher_b_mean * 2)}{' '}
-                    {addressStats.mev_b_mean > 0 && (
-                      <Tag color="red">
-                        very high ({addressStats.phisher_b_sum})
-                      </Tag>
-                    )}
-                  </Col>
-                </Fragment>
-              )}
-              {diamondStats && (
-                <Fragment>
-                  <Col span={12}>
-                    <p>Diamond hands 💎</p>
-                  </Col>
-                  <Col span={12}>{diamondStats.dt_count}</Col>
-                  <Col span={12}>
-                    <p>Max holding time 💎 since</p>
-                  </Col>
-                  <Col span={12}>
-                    {diamondStats.dt_max && diamondStats.dt_mean.split('.')[0]}
-                  </Col>
-                  <Col span={12}>
-                    <p>Mean holding time 💎 since</p>
-                  </Col>
-                  <Col span={12}>
-                    {diamondStats.dt_mean && diamondStats.dt_mean.split('.')[0]}{' '}
-                    <Tag color="green">very high</Tag>
-                  </Col>
-                </Fragment>
-              )}
-              {holdingStats && (
-                <Fragment>
-                  <Col span={12}>
-                    <p>Sellers</p>
-                  </Col>
-                  <Col span={12}>{holdingStats.dt_count}</Col>
-                  <Col span={12}>
-                    <p>Average time before selling 🕑</p>
-                  </Col>
-                  <Col span={12}>
-                    {holdingStats.dt_max &&
-                      (
-                        (holdingStats.diff_mean * 0.000000001) /
-                        60 /
-                        60
-                      ).toFixed(2)}{' '}
-                    h
-                  </Col>
-                  <Col span={12}>
-                    <p>Median time before selling 🕑</p>
-                  </Col>
-                  <Col span={12}>
-                    {holdingStats.diff_median &&
-                      (
-                        (holdingStats.diff_median * 0.000000001) /
-                        60 /
-                        60
-                      ).toFixed(2)}{' '}
-                    h<Tag color="green">very high</Tag>
-                  </Col>
-                </Fragment>
-              )}
-              {/* <Col span={12}>
+                <Col span={12}>
+                  {/* <Tag color="default">default</Tag> */}
+                  <Tooltip placement="topLeft" title="Based on our algorithm">
+                    <Button
+                      style={{ width: '100%' }}
+                      icon={<QuestionCircleOutlined />}
+                    >
+                      70
+                    </Button>
+                  </Tooltip>
+                </Col>
+                {addressStats && (
+                  <Fragment>
+                    <Col span={12}>
+                      <p>Historic MEV Activity</p>
+                    </Col>
+                    <Col span={12}>
+                      {pctFormatter.format(addressStats.mev_b_mean * 2)}{' '}
+                      {addressStats.mev_b_mean > 0 && (
+                        <Tag color="volcano">
+                          high ({addressStats.mev_b_sum})
+                        </Tag>
+                      )}
+                    </Col>
+                    <Col span={12}>
+                      <p>Historic Phishing Activity</p>
+                    </Col>
+                    <Col span={12}>
+                      {pctFormatter.format(addressStats.phisher_b_mean * 2)}{' '}
+                      {addressStats.mev_b_mean > 0 && (
+                        <Tag color="red">
+                          very high ({addressStats.phisher_b_sum})
+                        </Tag>
+                      )}
+                    </Col>
+                  </Fragment>
+                )}
+                {diamondStats && (
+                  <Fragment>
+                    <Col span={12}>
+                      <p>Diamond hands 💎</p>
+                    </Col>
+                    <Col span={12}>{diamondStats.dt_count}</Col>
+                    <Col span={12}>
+                      <p>Max holding time 💎 since</p>
+                    </Col>
+                    <Col span={12}>
+                      {diamondStats.dt_max &&
+                        diamondStats.dt_mean.split('.')[0]}
+                    </Col>
+                    <Col span={12}>
+                      <p>Mean holding time 💎 since</p>
+                    </Col>
+                    <Col span={12}>
+                      {diamondStats.dt_mean &&
+                        diamondStats.dt_mean.split('.')[0]}{' '}
+                      <Tag color="green">very high</Tag>
+                    </Col>
+                  </Fragment>
+                )}
+                {holdingStats && (
+                  <Fragment>
+                    <Col span={12}>
+                      <p>Sellers</p>
+                    </Col>
+                    <Col span={12}>{holdingStats.dt_count}</Col>
+                    <Col span={12}>
+                      <p>Average time before selling 🕑</p>
+                    </Col>
+                    <Col span={12}>
+                      {holdingStats.dt_max &&
+                        (
+                          (holdingStats.diff_mean * 0.000000001) /
+                          60 /
+                          60
+                        ).toFixed(2)}{' '}
+                      h
+                    </Col>
+                    <Col span={12}>
+                      <p>Median time before selling 🕑</p>
+                    </Col>
+                    <Col span={12}>
+                      {holdingStats.diff_median &&
+                        (
+                          (holdingStats.diff_median * 0.000000001) /
+                          60 /
+                          60
+                        ).toFixed(2)}{' '}
+                      h<Tag color="green">very high</Tag>
+                    </Col>
+                  </Fragment>
+                )}
+                {/* <Col span={12}>
                 <p>Card content</p>
               </Col>
               <Col span={12}>
                 <Progress percent={30} size="small" status="active" />
               </Col> */}
-            </Row>
-
-            <Tooltip placement="topLeft" title="Prompt Text"></Tooltip>
+              </Row>
+            )}
             <p>Card content</p>
           </Card>
-          <Descriptions
-            title="Responsive Descriptions"
-            bordered
-            column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
-          >
-            <Descriptions.Item label="Product">
-              Cloud Database
-            </Descriptions.Item>
-            <Descriptions.Item label="Billing">Prepaid</Descriptions.Item>
-          </Descriptions>
         </Content>
       </Layout>
       <Footer>
-        Footer
+        Developer Info
         <br />
         Url: {state.tabUrl || '...'}
         <br />

@@ -7,7 +7,7 @@ describe("Transaction", function () {
   // and reset Hardhat Network to that snapshot in every test.
 
   it("Should fail if the unlockTime is not in the future", async function () {
-    let privatekey = "0x2a....";
+    let privatekey = "0x2...";
     let wallet = new ethers.Wallet(privatekey);
     console.log("Using wallet address " + wallet.address);
     let transaction = {
@@ -16,7 +16,7 @@ describe("Transaction", function () {
       gasLimit: "42000",
       maxPriorityFeePerGas: ethers.utils.parseUnits("20", "gwei"),
       maxFeePerGas: ethers.utils.parseUnits("40", "gwei"),
-      nonce: 99487,
+      nonce: 99447,
       type: 2,
       chainId: 5,
     };
