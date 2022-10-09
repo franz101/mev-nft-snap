@@ -30,8 +30,6 @@ Our solution is to sign transaction and send to Flashbot network by using MetaMa
 
 Recently hacks due to private key compromisation have been increasing. Our favorite actor Bill Murray lost $185,000 during his NFT charity auction!
 
-We want to store assets in a Gnosis Safe and the only ways how to transfer assets are by:
-- having a specific device with a MetaMask account. Transaction needs a signatures from private key AND encrypted secret inside the MetaMask.
-- 2 EOA account signatures. Each EOA account is custodied by a separate person.
+We want to store assets in a Gnosis Safe and the only ways how to transfer assets are by having the specific device with a MetaMask account. Transaction needs a signatures from private key AND the encrypted secret inside the MetaMask.
 
 
