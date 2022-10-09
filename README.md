@@ -1,4 +1,4 @@
 # MEV NFT: Protecting User MetaMask!
 
-![mevNft](./img/MEV%20NFT%20LOGO%20WHITE.png | width=100)
+![mevNft | width=100](./img/MEV%20NFT%20LOGO%20WHITE.png)
 ![flask](./img/flask.png =250x250)
