@@ -11,6 +11,7 @@ Within this repository you will find:
 - Gnosis Safe protection by signing transactions with a encrypted secret in MetaMask 
 
 ## Google Chrome Plugin
+![](./img/Chrome_extension.png)
 
 Provides NFT data analytics insights by injecting ntml code in NFT Market Place (OpenSea) website and imports MetaMask snaps.
 
