@@ -1,13 +1,13 @@
 {
   "version": "0.1.0",
-  "description": "An example Snap written in TypeScript.",
-  "proposedName": "TypeScript Example Snap",
+  "description": "MEV NFT",
+  "proposedName": "MEV NFT",
   "repository": {
     "type": "git",
     "url": "https://github.com/MetaMask/snap-template.git"
   },
   "source": {
-    "shasum": "GCC2UtZQtQj5pK8GnJHmJ9BQgUDuoBygeoJS0l5FISM=",
+    "shasum": "yc/SvW7p7WBWl79SHHcpwlOMb2T9lEHWi3xcAyL6Yss=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",
