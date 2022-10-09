@@ -8,9 +8,11 @@ Within this repository you will find:
 - Google Chrome Plugin for NFT Marketplace UI customization
 - MM Snap Transaction Insights
 - MM Snap snap_getBip32Entropy for Flashbots transactions
-- Gnosis Safe
+- Gnosis Safe protection by signing transactions with a encrypted secret in MetaMask 
 
 ## Google Chrome Plugin
+
+Provides NFT data analytics insights by injecting ntml code in NFT Market Place (OpenSea) website and imports MetaMask snaps.
 
 ## MM Snap Transaction Insights
 
@@ -20,4 +22,16 @@ Our technical solution is to send transaction transaction calldata to Tenderly t
 
 ## Flashbots transactions
 
+Users now use Flashbots as custom networks in MetaMask. Flashbot network can't be added automatically by website because Flashbot network has the same chain id as Ethereum main net.
+
+Our solution is to sign transaction and send to Flashbot network by using MetaMask Snap snap_getBip32Entropy method.
+
 ## Gnosis Safe
+
+Recently hacks due to private key compromisation have been increasing. Our favorite actor Bill Murray lost $185,000 during his NFT charity auction!
+
+We want to store assets in a Gnosis Safe and the only ways how to transfer assets are by:
+- having a specific device with a MetaMask account. Transaction needs a signatures from private key AND encrypted secret inside the MetaMask.
+- 2 EOA account signatures. Each EOA account is custodied by a separate person.
+
+
