@@ -33,7 +33,7 @@
     "@metamask/eslint-config-jest": "^10.0.0",
     "@metamask/eslint-config-nodejs": "^10.0.0",
     "@metamask/eslint-config-typescript": "^10.0.0",
-    "@metamask/snap-types": "^0.20.0",
+    "@metamask/snap-types": "^0.22.1",
     "@metamask/snaps-cli": "^0.18.1",
     "@typescript-eslint/eslint-plugin": "^5.33.0",
     "@typescript-eslint/parser": "^5.33.0",
@@ -56,5 +56,13 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
+  },
+  "dependencies": {
+    "@flashbots/ethers-provider-bundle": "^0.5.0",
+    "@metamask/key-tree": "^5.0.2",
+    "@metamask/utils": "^3.2.0",
+    "@noble/bls12-381": "^1.4.0",
+    "eth-rpc-errors": "^4.0.3",
+    "ethers": "^5.7.1"
   }
 }

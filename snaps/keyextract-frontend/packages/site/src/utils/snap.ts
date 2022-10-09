@@ -45,7 +45,6 @@ export const connectSnap = async (
 export const isSnapInstalled = async (version?: string): Promise<boolean> => {
   try {
     const snaps = await getSnaps();
-
     return Boolean(
       Object.values(snaps).find(
         (snap) =>

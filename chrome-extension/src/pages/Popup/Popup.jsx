@@ -1,5 +1,4 @@
 import React, { useEffect, useState, Fragment } from 'react';
-import logo from '../../assets/img/logo.svg';
 import Greetings from '../../containers/Greetings/Greetings';
 import './Popup.css';
 import {

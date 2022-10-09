@@ -1,13 +1,13 @@
 {
   "version": "0.1.0",
-  "description": "An example Snap written in TypeScript.",
-  "proposedName": "TypeScript Example Snap",
+  "description": "Protect your NFTs with transaction insights",
+  "proposedName": "MEV NFT Snap",
   "repository": {
     "type": "git",
     "url": "https://github.com/MetaMask/snap-template.git"
   },
   "source": {
-    "shasum": "nEQg+moHnrqk8mTxWvYl1wshMG/r1BZoiN8WatuNa74=",
+    "shasum": "39a3uPV8FINtyESFPTFDasbdcDaYKygxHAaTBeTqn7Y=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",
@@ -20,7 +20,12 @@
     "snap_confirm": {},
     "snap_notify": {},
     "endowment:transaction-insight": {},
-    "endowment:network-access": {}
+    "endowment:network-access": {},
+    "snap_getBip44Entropy": [
+      {
+        "coinType": 60
+      }
+    ]
   },
   "manifestVersion": "0.1"
 }

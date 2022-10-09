@@ -1,17 +1,9 @@
 import { useContext } from 'react';
 import { Row, Col, Avatar, Button } from 'antd';
-import styled from 'styled-components';
+import { CheckCircleOutlined } from '@ant-design/icons';
 import { MetamaskActions, MetaMaskContext, MetamaskState } from '../hooks';
 import { connectSnap, isSnapInstalled } from '../utils';
 import { ReactComponent as FlaskFox } from '../assets/flask_fox.svg';
-
-const ConnectedIndicator = styled.div`
-  content: ' ';
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: green;
-`;
 
 const ConnectButton = ({
   state,
@@ -20,13 +12,10 @@ const ConnectButton = ({
   state: MetamaskState;
   handleConnectClick: () => Promise<void>;
 }) => {
+  console.log(state);
   if (!state.isFlask && !state.isSnapInstalled) {
     return (
-      <Button
-        icon={<FlaskFox />}
-        type="ghost"
-        // style={{ backgroundColor: 'lightgrey' }}
-      >
+      <Button icon={<FlaskFox />} type="ghost">
         Install Flask
       </Button>
     );
@@ -34,13 +23,17 @@ const ConnectButton = ({
 
   if (!state.isSnapInstalled) {
     return (
-      <Button icon={<FlaskFox />} type="ghost" onClick={handleConnectClick}>
-        Connect
+      <Button type="ghost" onClick={handleConnectClick}>
+        Connect <FlaskFox />
       </Button>
     );
   }
 
-  return <Button icon={<ConnectedIndicator />}>Connected</Button>;
+  return (
+    <Button icon={<CheckCircleOutlined />} disabled>
+      Connected
+    </Button>
+  );
 };
 
 export const HeaderRow = () => {
@@ -49,11 +42,10 @@ export const HeaderRow = () => {
   const handleConnectClick = async () => {
     try {
       await connectSnap();
-      const snapInstalled = await isSnapInstalled();
-
+      await isSnapInstalled();
       dispatch({
         type: MetamaskActions.SetInstalled,
-        payload: snapInstalled,
+        payload: { snapInstalled: true }, // TODO: check if snap is installed
       });
     } catch (e) {
       console.error(e);
@@ -63,7 +55,7 @@ export const HeaderRow = () => {
 
   return (
     <Row>
-      <Col span={2}>
+      <Col span={1}>
         <Avatar
           src="/MEV_NFT_LOGO_SPARE.png"
           style={{ backgroundColor: 'white' }}
@@ -71,24 +63,10 @@ export const HeaderRow = () => {
         />
       </Col>
 
-      <Col span={19}>MEV NFT</Col>
-      <Col span={3}>
+      <Col span={21}>MEV NFT</Col>
+      <Col span={2} style={{ paddingTop: '2px' }}>
         <ConnectButton state={state} handleConnectClick={handleConnectClick} />
       </Col>
     </Row>
-
-    // <HeaderWrapper>
-    //   <LogoWrapper>
-    //     <SnapLogo color={theme.colors.icon.default} size={36} />
-    //     <Title>template-snap</Title>
-    //   </LogoWrapper>
-    //   <RightContainer>
-    //     <Toggle
-    //       onToggle={handleToggleClick}
-    //       defaultChecked={getThemePreference()}
-    //     />
-    //     <HeaderButtons state={state} onConnectClick={handleConnectClick} />
-    //   </RightContainer>
-    // </HeaderWrapper>
   );
 };

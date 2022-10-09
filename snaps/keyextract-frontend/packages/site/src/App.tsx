@@ -1,13 +1,18 @@
 import './App.css';
 // import { useContext } from 'react';
 import { UnlockOutlined } from '@ant-design/icons';
-import { Button, Col, Divider, Layout, Result, Row } from 'antd';
+import { Button, Divider, Layout, Result } from 'antd';
 import styled from 'styled-components';
+import { useCallback } from 'react';
+import { Particles } from 'react-tsparticles';
+import type { Container, Engine } from 'tsparticles-engine';
+import { loadFull } from 'tsparticles';
 import { MetaMaskProvider } from './hooks';
 import { HeaderRow } from './components/Header';
-import { ReactComponent as MetaMaskFox } from './assets/metamask_fox.svg';
+import { Footer } from './components/Footer';
+import { sendHello } from './utils';
 
-const { Header, Content, Footer } = Layout;
+const { Header, Content } = Layout;
 // const { Title } = Typography;
 
 const Wrapper = styled.div`
@@ -19,8 +24,21 @@ const Wrapper = styled.div`
 `;
 
 function App() {
-  // const [state, dispatch] = useContext(MetaMaskContext);
+  const particlesInit = useCallback(async (engine: Engine) => {
+    console.log(engine);
 
+    // you can initialize the tsParticles instance (engine) here, adding custom shapes or presets
+    // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
+    // starting from v2 you can add only the features you need reducing the bundle size
+    await loadFull(engine);
+  }, []);
+
+  const particlesLoaded = useCallback(
+    async (container: Container | undefined) => {
+      await console.log(container);
+    },
+    [],
+  );
   return (
     <MetaMaskProvider>
       <Wrapper>
@@ -36,55 +54,28 @@ function App() {
                 title="Secure your transactions"
                 subTitle="Connect your MetaMask wallet, to have transactions insights"
                 extra={[
-                  <Button type="primary" key="console">
+                  <Button
+                    type="primary"
+                    key="console"
+                    onClick={() => {
+                      sendHello();
+                    }}
+                  >
                     Install
                   </Button>,
-                  // <Button key="buy">Buy Again</Button>,
+                  <Button key="buy">Set up secure wallet</Button>,
                 ]}
+              />
+              <Particles
+                id="tsparticles"
+                url="/particles.json"
+                init={particlesInit}
+                loaded={particlesLoaded}
               />
             </Content>
           </Layout>
 
-          <Footer>
-            <Row justify="space-around">
-              <Col>
-                <Button
-                  size="large"
-                  style={{ width: '260px', height: '70px' }}
-                  icon={<MetaMaskFox />}
-                >
-                  Powered by MetaMask
-                </Button>
-              </Col>
-              <Col>
-                <Button
-                  size="large"
-                  style={{ height: '70px' }}
-                  icon={<MetaMaskFox />}
-                >
-                  QuickNode
-                </Button>
-              </Col>
-              <Col>
-                <Button
-                  size="large"
-                  style={{ height: '70px' }}
-                  icon={<MetaMaskFox />}
-                >
-                  Coinbase Cloud
-                </Button>
-              </Col>
-              <Col>
-                <Button
-                  size="large"
-                  style={{ height: '70px' }}
-                  icon={<MetaMaskFox />}
-                >
-                  Gnosis Chain
-                </Button>
-              </Col>
-            </Row>
-          </Footer>
+          <Footer />
         </Layout>
       </Wrapper>
     </MetaMaskProvider>
