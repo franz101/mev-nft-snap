@@ -99,6 +99,10 @@ install-state.gz
 .yarn/install-state.gz
 .pnp.*
 
+cache
+unplugged
+install-state.gz
+
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
