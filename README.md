@@ -23,7 +23,6 @@ We are using MetaMask Transaction Insights to determine if transaction will tran
 Our technical solution is to send transaction transaction calldata to Tenderly transaction simulation API. Transaction simulation returns Transaction Logs and we can see in logs if there was a critical event logged as Transfer, Approval, ApprovalForAll.
 
 ## Flashbots transactions
-![](./img/Chrome_extension.png)
 
 Users now use Flashbots as custom networks in MetaMask. Flashbot network can't be added automatically by website because Flashbot network has the same chain id as Ethereum main net.
 
