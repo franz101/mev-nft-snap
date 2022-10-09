@@ -28,3 +28,6 @@ Snap -> sends the transaction to infura using fetch
 https://docs.reservoir.tools/reference/getcollectionsv5
 
 
+
+// design
+https://ant.design/components/statistic/

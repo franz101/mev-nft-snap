@@ -121,3 +121,6 @@ tmp
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+*.parquet
+.ipynb_checkpoints
