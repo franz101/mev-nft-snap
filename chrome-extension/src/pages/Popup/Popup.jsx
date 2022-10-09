@@ -38,6 +38,7 @@ const Popup = () => {
   const [addressStats, setAddressStats] = useState({});
   const [diamondStats, setDiamondStats] = useState({});
   const [holdingStats, setHoldingStats] = useState({});
+  const [metadata, setMetadata] = useState({});
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -49,6 +50,30 @@ const Popup = () => {
   }, []);
 
   useEffect(() => {
+    const fetchMetadata = async () => {
+      const response = await fetch(
+        'https://green-holy-isle.discover.quiknode.pro/716b917f44e3ee4f2351e6ca8553161f1d4720ff/',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-qn-api-version': '1',
+          },
+          // body: '{\n    "id":67,\n    "jsonrpc":"2.0",\n    "method":"qn_fetchNFTCollectionDetails",\n    "params":{\n      "contracts": [\n        "0x60E4d786628Fea6478F785A6d7e704777c86a7c6",\n        "0x7Bd29408f11D2bFC23c34f18275bBf23bB716Bc7"\n      ]\n    }\n  }',
+          body: JSON.stringify({
+            id: 67,
+            jsonrpc: '2.0',
+            method: 'qn_fetchNFTCollectionDetails',
+            params: {
+              contracts: [inputAddress],
+            },
+          }),
+        }
+      );
+      const json = await response.json();
+      setMetadata(json.result[0]);
+      //name: "Meebits", description: "Meebits", address: "0x7Bd29408f11D2bFC23c34f18275bBf23bB716Bc7",…}
+    };
     const fetchStats = async () => {
       const response = await fetch(
         'http://localhost:8000/api/stat/' + inputAddress
@@ -74,6 +99,7 @@ const Popup = () => {
       fetchHands();
       fetchHolding();
       fetchStats();
+      fetchMetadata();
     }
   }, [inputAddress]);
 
@@ -138,13 +164,15 @@ const Popup = () => {
               onChange={(evt) => setInputAddress(evt.currentTarget.value)}
               placeholder="Check NFT contract 0x..."
             />
-
+            <p style={{ paddingTop: '30px' }}>
+              Collection: {metadata.name || 'Unknown'}
+            </p>
             {/* <Progress type="circle" percent={70} width={80} /> */}
             {inputAddress.length !== 42 && <Logo />}
             {inputAddress.length === 42 && (
               <Row
                 gutter={[24, 24]}
-                style={{ paddingTop: '30px', width: '100%' }}
+                style={{ paddingTop: '0px', width: '100%' }}
               >
                 <Col span={12}>
                   <p>Trust score</p>
