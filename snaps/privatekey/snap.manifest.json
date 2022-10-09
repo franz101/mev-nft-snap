@@ -1,0 +1,28 @@
+{
+  "version": "0.22.1",
+  "description": "An example Snap that derives keys using BIP-32.",
+  "proposedName": "@metamask/test-snap-bip32",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MetaMask/snaps-skunkworks.git"
+  },
+  "source": {
+    "shasum": "H4RNMOaNotCWnaYO7a2drgCZB2//jScs+uarmwp/c0o=",
+    "location": {
+      "npm": {
+        "filePath": "dist/bundle.js",
+        "packageName": "ethers-js-snap",
+        "registry": "https://registry.npmjs.org"
+      }
+    }
+  },
+  "initialPermissions": {
+    "snap_confirm": {},
+    "snap_getBip44Entropy": [
+      {
+        "coinType": 60
+      }
+    ]
+  },
+  "manifestVersion": "0.1"
+}
