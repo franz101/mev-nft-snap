@@ -1,7 +1,7 @@
 # MEV NFT: Protecting User MetaMask!
 
 ![mevNft](./img/flask_mev_nft.png)
-[![Watch the introduction video!](./img/flask_mev_nft.png)](https://stream.mux.com/uTq01yD3pMUgvHkkcbnlTfrCdnLMAkALDYrkY32r9b58/high.mp4)
+[![Watch the introduction video!](./img/VideoImage_small_2.png)](https://stream.mux.com/uTq01yD3pMUgvHkkcbnlTfrCdnLMAkALDYrkY32r9b58/high.mp4)
 
 
 Welcome to MEV NFT repository!
