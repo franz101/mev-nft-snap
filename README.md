@@ -16,7 +16,7 @@ Within this repository you will find:
 Provides NFT data analytics insights by injecting ntml code in NFT Market Place (OpenSea) website and imports MetaMask snaps.
 
 ## MM Snap Transaction Insights
-![](./img/TransactionInsight.png =250x250)
+![](./img/TransactionInsight.png)
 
 We are using MetaMask Transaction Insights to determine if transaction will transfer user assets. There have been many hacks were website front end was hijacked or website was giving false information about expected transaction. Imagine scenario were user signs transaction in order to be whitlisted for NFT minting however he is actually transfering his NFT's!
 
