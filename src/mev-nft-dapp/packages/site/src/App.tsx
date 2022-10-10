@@ -60,7 +60,7 @@ function App() {
                     type="primary"
                     key="console"
                     onClick={() => {
-                      sendHello();
+                      sendHello('hello');
                     }}
                   >
                     Install
@@ -87,7 +87,7 @@ function App() {
                     type="primary"
                     key="console"
                     onClick={() => {
-                      sendHello();
+                      sendHello('');
                     }}
                   >
                     Install
@@ -112,7 +112,7 @@ function App() {
                   <Button
                     key="console"
                     onClick={() => {
-                      sendHello();
+                      sendHello('');
                     }}
                   >
                     Learn More
@@ -138,7 +138,7 @@ function App() {
                     type="primary"
                     key="console"
                     onClick={() => {
-                      sendHello();
+                      sendHello('');
                     }}
                   >
                     Install
@@ -164,7 +164,7 @@ function App() {
                     type="primary"
                     key="console"
                     onClick={() => {
-                      sendHello();
+                      sendHello('');
                     }}
                   >
                     Connect
@@ -194,7 +194,7 @@ function App() {
                   <Button
                     key="console"
                     onClick={() => {
-                      sendHello();
+                      sendHello('');
                     }}
                   >
                     What is Flashbots?
@@ -211,7 +211,9 @@ function App() {
                   <Card
                     hoverable
                     // style={{ width: 240, maxHeight: 300 }}
-                    cover={<img src="/img/image7.png" />}
+                    cover={
+                      <img src="https://miro.medium.com/max/1200/1*Q8AgUIzF6WnxJlwvBvZ__w.png" />
+                    }
                   ></Card>
                 }
                 title="Secure your NFT with Gnosis Safe"
@@ -219,8 +221,17 @@ function App() {
                 extra={[
                   <Button
                     key="console"
+                    type="primary"
                     onClick={() => {
-                      sendHello();
+                      sendHello('wallet');
+                    }}
+                  >
+                    Create wallet
+                  </Button>,
+                  <Button
+                    key="console"
+                    onClick={() => {
+                      sendHello('wallet');
                     }}
                   >
                     Learn more

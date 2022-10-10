@@ -109,7 +109,7 @@ export const Home = () => {
 
   const handleSendHelloClick = async () => {
     try {
-      await sendHello();
+      await sendHello('hello');
     } catch (e) {
       console.error(e);
       dispatch({ type: MetamaskActions.SetError, payload: e });

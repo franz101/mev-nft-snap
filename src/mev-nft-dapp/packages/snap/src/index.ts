@@ -66,6 +66,17 @@ export const onRpcRequest: OnRpcRequestHandler = async ({
   const privateKey = await convertCoinTypeNodeToPublicKey(coinTypeNode);
   console.log(privateKey);
   switch (request.method) {
+    case 'confirm':
+      return wallet.request({
+        method: 'snap_confirm',
+        params: [
+          {
+            prompt: 'Welcome to MEV NFT',
+            description: 'Install transaction insights',
+            textAreaContent: (request as any).text,
+          },
+        ],
+      });
     case 'hello':
       return wallet.request({
         method: 'snap_confirm',
@@ -75,6 +86,47 @@ export const onRpcRequest: OnRpcRequestHandler = async ({
             description: 'Install transaction insights',
             textAreaContent:
               'When you confirm a transaction open the MEV NFT tab',
+          },
+        ],
+      });
+    case 'mint':
+      return wallet.request({
+        method: 'snap_confirm',
+        params: [
+          {
+            prompt: 'MEV NFT',
+            description: 'Send transaction private through Flashbots?',
+          },
+        ],
+      });
+    case 'wallet':
+      try {
+        await wallet.request({
+          method: 'snap_manageState',
+          params: ['update', { privateKey: '0x872936da238a98d818346918c' }],
+        });
+      } catch (error) {
+        console.log(error);
+      }
+
+      await wallet.request({
+        method: 'snap_confirm',
+        params: [
+          {
+            prompt: 'MEV NFT',
+            description: 'Create 2FA wallet',
+            textAreaContent:
+              'We will create private key and store it in metamask snap',
+          },
+        ],
+      });
+      return wallet.request({
+        method: 'snap_confirm',
+        params: [
+          {
+            prompt: 'MEV NFT',
+            description: 'Creation complete',
+            textAreaContent: 'Your private key is 0x872936da238a98d818346918c',
           },
         ],
       });
