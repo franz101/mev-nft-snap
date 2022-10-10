@@ -46,19 +46,24 @@ const main = () => {
     'justify-content: center; text-align: center; padding: 17px 24px; width: 100%; border: 2px solid rgb(229, 232, 235); background-color: white ; color: rgb(32, 129, 226); display: inline-flex; flex-direction: row; font-weight: 600; border-radius: 12px';
   btn.onclick = function (event) {
     console.log('MEV button clicked');
-    console.log('debug');
-    alert('Invoke transaction through flashbots?');
-    window.ethereum.request({
-      method: 'wallet_invokeSnap',
-      params: [
-        defaultSnapOrigin,
-        {
-          method: 'mint',
-        },
-      ],
-    });
+
+    try {
+      window.ethereum.request({
+        method: 'wallet_invokeSnap',
+        params: [
+          defaultSnapOrigin,
+          {
+            method: 'mint',
+          },
+        ],
+      });
+    } catch (error) {
+      console.log(error);
+    }
+    alert('Invoked transaction through flashbots?');
+
     chrome.runtime.sendMessage({
-      msg: 'something_completed',
+      msg: 'Flashbots button clicked',
       data: {
         subject: 'Loading',
         content: 'Just completed!',

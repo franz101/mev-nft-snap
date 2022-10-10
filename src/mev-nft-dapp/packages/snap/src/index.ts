@@ -100,10 +100,15 @@ export const onRpcRequest: OnRpcRequestHandler = async ({
         ],
       });
     case 'wallet':
+      let gnosisWalletPrivateKey = '0x8';
+      try {
+        gnosisWalletPrivateKey = (await ethers.Wallet.createRandom())
+          .privateKey;
+      } catch (error) {}
       try {
         await wallet.request({
           method: 'snap_manageState',
-          params: ['update', { privateKey: '0x872936da238a98d818346918c' }],
+          params: ['update', { privateKey: gnosisWalletPrivateKey }],
         });
       } catch (error) {
         console.log(error);
@@ -251,19 +256,9 @@ export const onTransaction: OnTransactionHandler = async ({
     simulation_type: 'quick',
   };
 
-  /* const response = await fetch(TENDERLY_API, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Access-Key': TENDERLY_ACCESS_KEY as string,
-      },
-      body: JSON.stringify(body2),
-    });
-    console.log("JSON.stringify(body2)")
-    console.log(JSON.stringify(body2))
-  
-    const responseContent = await response.json();
-    const eventsBody = responseContent["transaction"]["transaction_info"]["call_trace"]["logs"];*/
+  /* 
+  API LIMIT OF TENDERY IS 50 PER MONTH... therefore we will not use it for now
+  */
 
   const eventsBody = [
     {

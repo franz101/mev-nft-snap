@@ -1,28 +1,14 @@
 import React, { useEffect, useState, Fragment } from 'react';
 import Logo from '../../containers/Logo';
 import './Popup.css';
-import {
-  Col,
-  Divider,
-  Row,
-  Descriptions,
-  Progress,
-  Layout,
-  Tooltip,
-  Button,
-  Card,
-  Tag,
-  Typography,
-  Input,
-} from 'antd';
+import { Col, Row, Layout, Tooltip, Button, Card, Tag, Input } from 'antd';
 import {
   QuestionCircleOutlined,
   WalletOutlined,
   SettingOutlined,
 } from '@ant-design/icons';
 
-const { Header, Content, Footer, Sider } = Layout;
-const { Title } = Typography;
+const { Content, Footer } = Layout;
 
 const option = {
   minimumFractionDigits: 4,
@@ -106,10 +92,7 @@ const Popup = () => {
 
   return (
     <Layout>
-      {/* <Header>    <Title>MEV NFT</Title>
-</Header> */}
       <Layout>
-        {/* <Sider>left sidebar</Sider> */}
         <Content>
           <Row
             gutter={[24, 24]}
@@ -169,7 +152,6 @@ const Popup = () => {
               </p>
             )}
             <p>Example: 0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d</p>
-            {/* <Progress type="circle" percent={70} width={80} /> */}
             {inputAddress.length !== 42 && <Logo />}
             {inputAddress.length === 42 && (
               <Row
@@ -181,7 +163,6 @@ const Popup = () => {
                 </Col>
 
                 <Col span={12}>
-                  {/* <Tag color="default">default</Tag> */}
                   <Tooltip placement="topLeft" title="Based on our algorithm">
                     <Button
                       style={{ width: '100%' }}
@@ -280,12 +261,6 @@ const Popup = () => {
                     <Col span={12}>773</Col>
                   </Fragment>
                 )}
-                {/* <Col span={12}>
-                <p>Card content</p>
-              </Col>
-              <Col span={12}>
-                <Progress percent={30} size="small" status="active" />
-              </Col> */}
               </Row>
             )}
             <p>Card content</p>

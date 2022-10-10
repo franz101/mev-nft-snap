@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
 import { MetamaskActions, MetaMaskContext } from '../hooks';
-import { connectSnap, isSnapInstalled, sendHello } from '../utils';
+import { connectSnap, isSnapInstalled, invokeSnap } from '../utils';
 import { ConnectButton, InstallFlaskButton, SendHelloButton } from './Buttons';
 import { Card } from './Card';
 
@@ -109,7 +109,7 @@ export const Home = () => {
 
   const handleSendHelloClick = async () => {
     try {
-      await sendHello('hello');
+      await invokeSnap('hello');
     } catch (e) {
       console.error(e);
       dispatch({ type: MetamaskActions.SetError, payload: e });
